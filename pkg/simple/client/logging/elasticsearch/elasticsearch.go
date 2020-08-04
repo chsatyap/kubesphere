@@ -295,7 +295,7 @@ func (es *Elasticsearch) ExportLogs(sf logging.SearchFilter, w io.Writer) error 
 
 		output := new(bytes.Buffer)
 		for _, l := range data {
-			output.WriteString(fmt.Sprintf(`%s`, stringutils.StripAnsi(l)))
+			output.WriteString(stringutils.StripAnsi(l))
 		}
 		_, err = io.Copy(w, output)
 		if err != nil {
