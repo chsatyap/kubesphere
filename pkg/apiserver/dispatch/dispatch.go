@@ -80,9 +80,7 @@ func NewClusterDispatch(clusterInformer clusterinformer.ClusterInformer, cluster
 		DeleteFunc: func(obj interface{}) {
 			cluster := obj.(*clusterv1alpha1.Cluster)
 			clusterDispatcher.mutex.Lock()
-			if _, ok := clusterDispatcher.innerClusters[cluster.Name]; ok {
-				delete(clusterDispatcher.innerClusters, cluster.Name)
-			}
+			delete(clusterDispatcher.innerClusters, cluster.Name)
 			clusterDispatcher.mutex.Unlock()
 
 		},
