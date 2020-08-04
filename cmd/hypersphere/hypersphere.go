@@ -42,8 +42,8 @@ func commandFor(basename string, defaultCommand *cobra.Command, commands []func(
 }
 
 func NewHyperSphereCommand() (*cobra.Command, []func() *cobra.Command) {
-	apiserver := func() *cobra.Command { return ksapiserver.NewAPIServerCommand() }
-	controllermanager := func() *cobra.Command { return controllermanager.NewControllerManagerCommand() }
+	apiserver := ksapiserver.NewAPIServerCommand
+	controllermanager := controllermanager.NewControllerManagerCommand
 
 	commandFns := []func() *cobra.Command{
 		apiserver,
