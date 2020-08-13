@@ -319,8 +319,5 @@ func IsNotFound(err error) bool {
 }
 
 func IsDeleted(err error) bool {
-	if strings.Contains(err.Error(), "is [deleted]") {
-		return true
-	}
-	return false
+	return strings.Contains(err.Error(), "is [deleted]")
 }
